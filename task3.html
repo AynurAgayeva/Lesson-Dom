@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canlı Filtr</title>
+</head>
+<body>
+    <input type="text" id="searchInput" placeholder="Axtarış edin...">
+    <ul id="itemsList">
+        <li>Alma</li>
+        <li>Armud</li>
+        <li>Banana</li>
+        <li>Üzüm</li>
+        <li>Çiyələk</li>
+    </ul>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const itemsList = document.getElementById('itemsList');
+        const items = itemsList.getElementsByTagName('li');
+
+        searchInput.addEventListener('input', () => {
+            const filter = searchInput.value.toLowerCase();
+            Array.from(items).forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(filter)) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
